@@ -4,8 +4,10 @@ import PurchaseReturnHeader from "../../components/PurchaseReturnHeader";
 const PurchaseReturn = () => {
     return (
         <>
-            <PurchaseReturnHeader />
-            <PurchasePaymentOutTransection />
+            <div className="p-3">
+                <PurchaseReturnHeader />
+                <PurchasePaymentOutTransection />
+            </div>
         </>
     );
 };

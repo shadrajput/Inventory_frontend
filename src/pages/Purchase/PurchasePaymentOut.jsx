@@ -5,8 +5,10 @@ import PurchasePaymentOutTransection from "../../components/PurchasePaymentOutTr
 const SalesPaymentIn = () => {
     return (
         <>
-            <PurchasePaymentOutHeader/>
-            <PurchasePaymentOutTransection/>
+            <div className="p-3">
+                <PurchasePaymentOutHeader />
+                <PurchasePaymentOutTransection />
+            </div>
         </>
     );
 };

@@ -4,8 +4,10 @@ import SalesTransection from "../../components/SalesTransection";
 const SalesInvoice = () => {
   return (
     <>
-    <SalesHeader/>
-    <SalesTransection/>
+      <div className="p-3">
+        <SalesHeader />
+        <SalesTransection />
+      </div>
     </>
   );
 };

@@ -4,8 +4,10 @@ import SalesReturnTransection from "../../components/SaleReturnTransection";
 const SaleReturn = () => {
   return (
     <>
-      <SaleReturnHeader/>
-      <SalesReturnTransection/>
+      <div className="p-3">
+        <SaleReturnHeader />
+        <SalesReturnTransection />
+      </div>
     </>
   );
 };

@@ -5,7 +5,7 @@ import ItemsTransection from '../components/ItemsTransection';
 const Profile = () => {
   return (
     <>
-      <div className='flex items-start space-x-3 h-full'>
+      <div className='flex items-start space-x-3 h-full p-3'>
         <div className='w-[30%]'>
           <AddandSearchItems />
         </div>

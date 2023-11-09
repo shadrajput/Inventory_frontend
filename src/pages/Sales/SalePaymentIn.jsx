@@ -4,8 +4,10 @@ import SalesPaymentInTransection from "../../components/SalesPaymentInTransectio
 const SalesPaymentIn = () => {
     return (
         <>
-            <SalesPaymentInHeader/>
-            <SalesPaymentInTransection/>
+            <div className="p-3">
+                <SalesPaymentInHeader />
+                <SalesPaymentInTransection />
+            </div>
         </>
     );
 };

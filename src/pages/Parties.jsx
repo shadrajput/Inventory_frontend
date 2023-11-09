@@ -5,7 +5,7 @@ import PartiesTransection from '../components/PartyTransection';
 const Parties = () => {
   return (
     <>
-      <div className='flex items-start space-x-3 h-full'>
+      <div className='flex items-start space-x-3 h-full p-3'>
         <div className='w-[30%]'>
           <AddandSearchparties />
         </div>

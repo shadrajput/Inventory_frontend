@@ -4,6 +4,7 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 import DropdownMessage from './DropdownMessage';
 import DropdownNotification from './DropdownNotification';
 import DropdownUser from './DropdownUser';
+import {BiPlus} from "react-icons/bi"
 
 const Header = ({
   sidebarOpen,
@@ -94,19 +95,17 @@ const Header = ({
 
         <div className="flex items-center gap-3 2xsm:gap-4">
           {/* Add Sales Button */}
-          <div className='bg-meta-1 shadow-lg flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 py-2 font-semibold'>
-            <svg xmlns="http://www.w3.org/2000/svg" className="bg-white text-danger rounded-full" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-            </svg>
-            <button>
+          <div className='bg-red-200 shadow-lg flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
+            <BiPlus className='text-xl bg-red-500 rounded-full' />
+            <button className='text-red-500'>
               Add Sales
             </button>
           </div>
           {/* Add Sales Button */}
           {/* Add Sales Button */}
-          <div className='bg-primary shadow-lg flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 py-2 font-semibold'>
-            <svg xmlns="http://www.w3.org/2000/svg" className="bg-white text-primary rounded-full" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-            </svg>
-            <button>
+          <div className='bg-blue-200 shadow-lg flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
+            <BiPlus className='text-xl bg-blue-500 rounded-full' />
+            <button className='text-blue-500'>
               Add Purchase
             </button>
           </div>
