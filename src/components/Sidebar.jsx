@@ -5,13 +5,14 @@ import SidebarLinkGroup from './SidebarLinkGroup';
 import { HiShoppingCart } from "react-icons/hi"
 import { PiNote } from "react-icons/pi"
 import { FiChevronRight } from "react-icons/fi"
+import MyCompanyDetailsModel from './MyCompanyModel';
 
 
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
   const { pathname } = location;
-
+  const [MyCompanyModel, setMyCompanyModel] = useState(false);
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
@@ -63,15 +64,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-3 py-5.5 lg:py-3 border-b cursor-pointer">
-        <div className='rounded-full flex items-center space-x-3 '>
+        <div onClick={() => setMyCompanyModel(true)}
+          className='rounded-full flex items-center space-x-3 '>
           <div className='bg-blue-500 rounded-full h-10 w-10 p-1 flex justify-center items-center'>
-          <img src="/Shop.png" alt="Logo" className=" cursor-pointer w-5 h-5" />
+            <img src="/Shop.png" alt="Logo" className=" cursor-pointer w-5 h-5" />
           </div>
           <div className='flex items-center'>
             <div className='font-bold text-white'>
               My Company
             </div>
-            <FiChevronRight className=' text-white text-xl mt-1 ml-5' />
+            <FiChevronRight className=' text-white text-xl mt-1 ml-2' />
           </div>
         </div>
 
@@ -290,7 +292,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   return (
                     <React.Fragment>
                       <NavLink
-                         to="/Sales/SaleInvoice"
+                        to="/Sales/SaleInvoice"
                         className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/forms' ||
                           pathname.includes('forms')) &&
                           'bg-graydark dark:bg-meta-4'
@@ -662,7 +664,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     'bg-graydark dark:bg-meta-4'
                     }`}
                 >
-                 <img src="/graph.png" alt="" className='w-5 h-5' />
+                  <img src="/graph.png" alt="" className='w-5 h-5' />
                   Report
                 </NavLink>
               </li>
@@ -976,8 +978,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         </nav>
         {/* <!-- Sidebar Menu --> */}
       </div>
+      <MyCompanyDetailsModel
+        showModal={MyCompanyModel}
+        handleShowModal={setMyCompanyModel}
+      // PhoneDetails={PhoneDetails}
+      // is_Edit={is_Edit}
+
+      />
     </aside>
   );
 };
+
 
 export default Sidebar;

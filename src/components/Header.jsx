@@ -4,7 +4,8 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 import DropdownMessage from './DropdownMessage';
 import DropdownNotification from './DropdownNotification';
 import DropdownUser from './DropdownUser';
-import {BiPlus} from "react-icons/bi"
+import { BiPlus } from "react-icons/bi"
+import { AiFillSetting } from "react-icons/ai"
 
 const Header = ({
   sidebarOpen,
@@ -12,7 +13,7 @@ const Header = ({
 }) => {
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
-      <div className="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-11">
+      <div className="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-5">
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
@@ -95,7 +96,7 @@ const Header = ({
 
         <div className="flex items-center gap-3 2xsm:gap-4">
           {/* Add Sales Button */}
-          <div className='bg-red-200 shadow-lg flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
+          <div className='bg-red-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
             <BiPlus className='text-xl bg-red-500 rounded-full' />
             <button className='text-red-500'>
               Add Sales
@@ -103,7 +104,7 @@ const Header = ({
           </div>
           {/* Add Sales Button */}
           {/* Add Sales Button */}
-          <div className='bg-blue-200 shadow-lg flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
+          <div className='bg-blue-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
             <BiPlus className='text-xl bg-blue-500 rounded-full' />
             <button className='text-blue-500'>
               Add Purchase
@@ -124,9 +125,11 @@ const Header = ({
           {/* <!-- Chat Notification Area --> */}
           {/* </ul> */}
 
-          {/* <!-- User Area --> */}
-          <DropdownUser />
-          {/* <!-- User Area --> */}
+          {/* Setting Area */}
+          <div className='border-l-2 border-slate-400 '>
+            <AiFillSetting className='text-2xl ml-5 cursor-pointer hover:scale-105' />
+          </div>
+          {/* Setting Area */}
         </div>
       </div>
     </header>

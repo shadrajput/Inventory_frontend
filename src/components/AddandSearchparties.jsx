@@ -1,24 +1,33 @@
+import React from "react"
 import { BiSolidContact } from "react-icons/bi"
 import { AiOutlineRight } from "react-icons/ai"
 import { AiOutlineSearch } from "react-icons/ai"
 import { HiPlusSm } from "react-icons/hi"
 import { AiOutlineDown } from "react-icons/ai"
 import { PiDotsThreeVerticalBold } from "react-icons/pi"
+import AddPartyModel from './AddPartyModel';
+import ImportExelModel from './ImportExelModel';
+
 
 const AddandSearchparties = () => {
+    const [AddParty, setAddParty] = React.useState(false);
+    const [ImportExel, setImportExel] = React.useState(false);
+
     return (
         <>
             <div className="h-[570px] w-full shadow-3 bg-white">
                 {/* Add Partiy Using Mobile Number or Gmail */}
-                <div className="px-3 pt-3 pb-6 cursor-pointer ">
-                    <div className="p-4 flex items-start shadow-2">
-                        <div className="rounded-full bg-red-100 py-2 px-2 flex justify-center items-center">
-                            <BiSolidContact className="text-red-600 text-lg" />
+                <div className="px-3 pt-3 pb-6 cursor-pointer" onClick={() => setImportExel(true)}>
+                    <div className="p-4 flex items-center shadow-2">
+                        <div className="bg-blue-200 h-8 w-8 rounded-full flex justify-center items-center">
+                            <div className="w-4  ">
+                                <img src="/exel.png" alt="exel" srcset="" className="cursor-pointer" />
+                            </div>
                         </div>
-                        <div className="flex items-center justify-between ">
+                        <div className="flex items-center justify-between w-full ">
                             <div className="pl-5">
                                 <h1 className="font-semibold text-black">Import Parties</h1>
-                                <p className="text-xs">Use contacts from your Phone or Gmail to create parties.
+                                <p className="text-xs">Drag and drop formatted excel file <br/> to continue
                                 </p>
                             </div>
                             <div className="flex justify-center items-center text-primary ">
@@ -34,12 +43,13 @@ const AddandSearchparties = () => {
                     <div className="py-3 px-3 bg-bodydark1 rounded-full">
                         <AiOutlineSearch className="text-black text-lg" />
                     </div>
-                    <div className="bg-warning flex items-center h-9 hover:bg-amber-400 hover:shadow-md rounded-md cursor-pointer pl-4 ">
+                    <div onClick={() => setAddParty(true)}
+                        className="bg-warning flex items-center h-9 hover:bg-amber-400 hover:shadow-md rounded-md cursor-pointer pl-4 ">
                         <HiPlusSm className="text-white text-xl" />
                         <h1 className="text-white text-sm font-semibold pr-4">Add Party</h1>
-                        <div className="bg-amber-600 h-9 flex justify-center items-center px-3 rounded-r-md">
+                        {/* <div className="bg-amber-600 h-9 flex justify-center items-center px-3 rounded-r-md">
                             <AiOutlineDown className="text-white" />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 {/* Search And Add Party */}
@@ -66,13 +76,28 @@ const AddandSearchparties = () => {
                             </div>
                         </div>
                         <div className="cursor-pointer text-black ">
-                            <PiDotsThreeVerticalBold className="text-lg"/>
+                            <PiDotsThreeVerticalBold className="text-lg" />
                         </div>
                     </div>
 
                 </div>
                 {/* Parties */}
             </div>
+
+            <AddPartyModel
+                showModal={AddParty}
+                handleShowModal={setAddParty}
+            // PhoneDetails={PhoneDetails}
+            // is_Edit={is_Edit}
+
+            />
+            <ImportExelModel
+                showModal={ImportExel}
+                handleShowModal={setImportExel}
+            // PhoneDetails={PhoneDetails}
+            // is_Edit={is_Edit}
+
+            />
         </>
     );
 };
