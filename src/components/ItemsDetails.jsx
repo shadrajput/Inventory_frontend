@@ -1,8 +1,11 @@
+import React from "react";
 import { MdOutlineCurrencyRupee } from "react-icons/md"
 import { HiOutlineAdjustments } from "react-icons/hi"
-
+import AdjustItemModel from "./AdjustItemModel";
 
 const ItemsDetails = () => {
+    const [Adjustitem, setAdjustitem] = React.useState(false);
+
     return (
         <>
             <div className="bg-white shadow-3 w-full px-3 py-3 ">
@@ -10,7 +13,7 @@ const ItemsDetails = () => {
                     <h1 className="text-black uppercase text-sm font-medium">
                         Temp
                     </h1>
-                    <div className="bg-blue-600 flex items-center space-x-3 h-8 px-3 rounded-md cursor-pointer hover:bg-blue-700">
+                    <div onClick={() => setAdjustitem(true)} className="bg-blue-600 flex items-center space-x-3 h-8 px-3 rounded-md cursor-pointer hover:bg-blue-700">
                         <HiOutlineAdjustments className="text-white" />
                         <h1 className="text-white font-medium text-xs uppercase">adjust item</h1>
                     </div>
@@ -39,6 +42,13 @@ const ItemsDetails = () => {
                     </div>
                 </div>
             </div>
+
+            <AdjustItemModel
+                showModal={Adjustitem}
+                handleShowModal={setAdjustitem}
+            // PhoneDetails={PhoneDetails}
+            // is_Edit={is_Edit}
+            />
         </>
     );
 };

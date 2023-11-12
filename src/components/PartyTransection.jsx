@@ -1,8 +1,67 @@
 
+import { useEffect, useRef, useState } from 'react';
 import { AiOutlineSearch } from "react-icons/ai"
 import { PiDotsThreeVerticalBold } from "react-icons/pi"
+import AddPartyModel from './AddPartyModel';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+
 
 const PartiesTransection = () => {
+    const [EditAndDelete, setEditAndDelete] = useState(false);
+    const [AddParty, setAddParty] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdown = useRef(null);
+    const trigger = useRef(null);
+
+    // close on click outside
+    useEffect(() => {
+        const clickHandler = ({ target }) => {
+            if (!dropdown.current) return;
+            if (
+                !dropdownOpen ||
+                dropdown.current.contains(target) ||
+                trigger.current.contains(target)
+            )
+                return;
+            setDropdownOpen(false);
+        };
+        document.addEventListener('click', clickHandler);
+        return () => document.removeEventListener('click', clickHandler);
+    });
+
+
+    // close if the esc key is pressed
+    useEffect(() => {
+        const keyHandler = ({ keyCode }) => {
+            if (!dropdownOpen || keyCode !== 27) return;
+            setDropdownOpen(false);
+        };
+        document.addEventListener('keydown', keyHandler);
+        return () => document.removeEventListener('keydown', keyHandler);
+    });
+
+    function CanselInvoice() {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't cancel invoice this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, cancel it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Canceled!",
+                    text: "Your file has been canceled.",
+                    icon: "success"
+                });
+            }
+        });
+
+    }
+
     return (
         <>
             <div className=" h-[440px] bg-white shadow-lg">
@@ -25,60 +84,98 @@ const PartiesTransection = () => {
 
                 {/* All Transection */}
                 <div>
-                    <table className=" w-full mt-4">
+                    <table className=" w-full mt-4 relative">
                         <thead className="flex justify-between items-center w-full">
-                            <tr className="uppercase text-[12px] font-medium border w-full border-slate-200 h-10 pl-4">
-                                
+                            <tr className="uppercase text-[12px] w-40 font-medium border  border-slate-200 h-10 pl-4">
+
                             </tr>
-                            <tr className="uppercase text-[12px] font-medium border w-full border-slate-200 py-2 pl-4">
+                            <tr className="uppercase text-[12px] font-medium border w-1/2 border-slate-200 py-2 pl-4">
                                 type
                             </tr>
-                            <tr className="uppercase text-[12px] font-medium border w-full border-slate-200 py-2 pl-4">
+                            <tr className="uppercase text-[12px] font-medium border w-1/2 border-slate-200 py-2 pl-4">
                                 number
                             </tr>
-                            <tr className="uppercase text-[12px] font-medium border w-full border-slate-200 py-2 pl-4">
+                            <tr className="uppercase text-[12px] font-medium border w-1/2 border-slate-200 py-2 pl-4">
                                 date
                             </tr>
-                            <tr className="uppercase text-[12px] font-medium border w-full border-slate-200 py-2 pl-4">
+                            <tr className="uppercase text-[12px] font-medium border w-1/2 border-slate-200 py-2 pl-4">
                                 total
                             </tr>
-                            <tr className="uppercase text-[12px] font-medium border w-full border-slate-200 py-2 pl-4">
+                            <tr className="uppercase text-[12px] font-medium border w-1/2 border-slate-200 py-2 pl-4">
                                 balance
                             </tr>
-                            <tr className="uppercase text-[12px] font-medium border w-full border-slate-200 py-2 pl-4">
+                            <tr className="uppercase text-[12px] w-40 font-medium border border-slate-200 py-2 pl-4">
                                 Act
                             </tr>
                         </thead>
-                        <tbody className="flex justify-between items-center w-full bg-blue-100">
-                            <td className="uppercase text-[12px] font-medium border-r w-full border-slate-300 py-2 pl-4">
+                        <tbody className="flex justify-between hover:bg-slate-200 cursor-pointer items-center w-full bg-blue-100">
+                            <td className="uppercase text-[12px] w-40 font-medium border-r border-slate-300 py-2 pl-4">
                                 <div className="bg-green-600 w-2 h-2 rounded-full">
-                                    
+
                                 </div>
                             </td>
-                            <td className="uppercase text-[12px] font-medium border-r w-full border-slate-300 py-2 pl-4">
-                                type
+                            <td className="uppercase text-[12px] font-medium border-r w-1/2 border-slate-300 py-2 pl-4">
+                                Sale
                             </td>
-                            <td className="uppercase text-[12px] font-medium border-r w-full border-slate-300 py-2 pl-4">
-                                number
+                            <td className="uppercase text-[12px] font-medium border-r w-1/2 border-slate-300 py-2 pl-4">
+                                1
                             </td>
-                            <td className="uppercase text-[12px] font-medium border-r w-full border-slate-300 py-2 pl-4">
-                                date
+                            <td className="uppercase text-[12px] font-medium border-r w-1/2 border-slate-300 py-2 pl-4">
+                                21/10/2023
                             </td>
-                            <td className="uppercase text-[12px] font-medium border-r w-full border-slate-300 py-2 pl-4">
-                                total
+                            <td className="uppercase text-end text-[12px] font-medium border-r w-1/2 border-slate-300 py-2 pl-4">
+                                <div className="flex items-end justify-end mr-2 ">
+                                    <h1>0.00</h1>
+                                </div>
                             </td>
-                            <td className="uppercase text-[12px] font-medium border-r w-full border-slate-300 py-2 pl-4">
-                                balance
+                            <td className="uppercase text-end text-[12px] font-medium border-r w-1/2 border-slate-300 py-2 pl-4">
+                                <div className="flex items-end justify-end mr-2 ">
+                                    <h1>0.00</h1>
+                                </div>
                             </td>
-                            <td className="uppercase cursor-pointer font-medium border-r w-full border-slate-200 py-2 pl-4">
-                                <PiDotsThreeVerticalBold/>
+                            <td
+                                ref={trigger}
+                                onClick={() => setDropdownOpen(!dropdownOpen)}
+                                className="uppercase cursor-pointer w-40 font-medium border-r  border-slate-200 py-2 pl-4">
+                                <PiDotsThreeVerticalBold />
                             </td>
                         </tbody>
+                        <div
+                            ref={dropdown}
+                            onFocus={() => setDropdownOpen(true)}
+                            onBlur={() => setDropdownOpen(false)}
+                            className={`absolute right-0 mt-4 flex flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? 'block' : 'hidden'
+                                }`}
+                        >
+                            <ul className="flex flex-col gap-5 border-b border-stroke px-4 py-2 dark:border-strokedark">
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    View / Show
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Cansel Invoice
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Preview Invoice
+                                </li>
+                            </ul>
+                        </div>
+                        {/* <!-- Dropdown End --> */}
                     </table>
                 </div>
                 {/* All Transection */}
 
             </div>
+
+            <AddPartyModel
+                showModal={AddParty}
+                handleShowModal={setAddParty}
+            // PhoneDetails={PhoneDetails}
+            // is_Edit={is_Edit}
+
+            />
         </>
     );
 };

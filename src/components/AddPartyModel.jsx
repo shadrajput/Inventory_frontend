@@ -116,8 +116,11 @@ function AddPartyModel({ showModal, handleShowModal, PhoneDetails, is_Edit }) {
                                         <input type="text" className="h-9 pl-2 focus:outline-blue-500 w-60 border rounded-md border-slate-300" name="Pincode" id="" placeholder="Email ID " />
                                     </div>
                                     <div>
-                                        <input type="text" className="h-9 pl-2 focus:outline-blue-500 w-60 border rounded-md border-slate-300" name="Pincode" id="" placeholder="Billing Address " />
-
+                                        <textarea
+                                            rows={6}
+                                            placeholder="Billing Addresss"
+                                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                        ></textarea>
                                     </div>
                                 </div>
                                 {/* GST & Address */}
