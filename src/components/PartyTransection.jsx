@@ -1,10 +1,10 @@
 
 import { useEffect, useRef, useState } from 'react';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import { AiOutlineSearch } from "react-icons/ai"
 import { PiDotsThreeVerticalBold } from "react-icons/pi"
 import AddPartyModel from './AddPartyModel';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
 
 
 const PartiesTransection = () => {
@@ -144,13 +144,13 @@ const PartiesTransection = () => {
                             ref={dropdown}
                             onFocus={() => setDropdownOpen(true)}
                             onBlur={() => setDropdownOpen(false)}
-                            className={`absolute right-0 mt-4 flex flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? 'block' : 'hidden'
+                            className={`absolute right-0 flex flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? 'block' : 'hidden'
                                 }`}
                         >
                             <ul className="flex flex-col gap-5 border-b border-stroke px-4 py-2 dark:border-strokedark">
                                 <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
                                 >
-                                    View / Show
+                                    View / Edit
                                 </li>
                                 <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
                                 >
@@ -158,7 +158,31 @@ const PartiesTransection = () => {
                                 </li>
                                 <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
                                 >
-                                    Preview Invoice
+                                    Delete
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Duplicate
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Open PDF
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Preview
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Print
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Preview As Dilevery Challan
+                                </li>
+                                <li className="flex items-center gap-3.5 text-sm cursor-pointer  duration-300 ease-in-out hover:text-primary"
+                                >
+                                    Convert To Return
                                 </li>
                             </ul>
                         </div>
