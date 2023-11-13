@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ChartOne from '../components/ChartOne.jsx';
 
 function SalesGraph
     ({ showModal, handleShowModal, PhoneDetails, is_Edit }) {
@@ -111,18 +112,14 @@ function SalesGraph
                     </div>
                 </div>
 
-                <div className="flex justify-between items-center w-full pt-10">
+                <div className="flex justify-between items-center w-full py-5">
                     <div>
                         <h1 className="text-black font-semibold">Sale Graph</h1>
                     </div>
-                    <div>
-                    <ul className="flex items-center ">
-                        <li className="text-cyan-500 px-5 text-lg text-[15px] font-medium cursor-pointer">Daily</li>
-                        <li className="text-cyan-500 px-5 text-lg text-[15px] font-medium cursor-pointer">Weekly</li>
-                        <li className="text-cyan-500 px-5 text-lg text-[15px] font-medium cursor-pointer">Monthly</li>
-                        <li className="text-cyan-500 px-5 text-lg text-[15px] font-medium cursor-pointer">Yearly</li>
-                    </ul>
-                    </div>
+                </div>
+
+                <div>
+                    <ChartOne />
                 </div>
             </div>
         </div>

@@ -142,7 +142,9 @@ const SalesInvoice = () => {
           <div className="right flex items-center justify-end space-x-7  w-60 mr-2">
             <div onClick={() => setSalegraph(true)}
               className="flex-col justify-center items-center cursor-pointer">
-              <BsGraphUp className="ml-2" />
+              <div className="bg-blue-500 flex justify-center items-center">
+                <img src="/graph.png" alt="" className='w-5 h-5' />
+              </div>
               <h1 className="text-xs font-semibold text-[#314259] mt-3 ">Graph</h1>
             </div>
             <div className="flex-col justify-center items-center">

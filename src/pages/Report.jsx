@@ -1,13 +1,13 @@
 import { useState } from "react";
 import SalesInvoice from "./Sales/SalesInvoice";
+import PurchaseInvoice from "./Purchase/PurchaseInvoice";
 
 const Report = () => {
-  const [Purchase, setPurchase] = useState(false)
-  const [Sale, setSale] = useState(false)
-
-  function SelectReport(e) {
-    console.log(e.target.value)
-  }
+  const [Sale, setSale] = useState("Sale")
+  const [Purchase, setPurchase] = useState("Purchase")
+  const [BalanceSheet, setBalanceSheet] = useState("BalanceSheet")
+  const [SelectReport, setSelectReport] = useState("")
+  console.log(SelectReport)
   return (
     <>
       <div className="flex items-start w-full">
@@ -17,20 +17,20 @@ const Report = () => {
             Transaction report
           </div>
           <div className="p-2">
-            <ul >
+            <ul>
               <li className="py-2 text-xs font-semibold cursor-pointer hover:bg-slate-200 pl-2">
                 All Transections
               </li>
-              <li onChange={SelectReport(e)}
+              <li onClick={() => setSelectReport(Purchase)}
                 className="py-2 text-xs font-semibold cursor-pointer hover:bg-slate-200 pl-2">
                 Purchase
               </li>
-              <li
+              <li onClick={() => setSelectReport(Sale)}
                 className="py-2 text-xs font-semibold cursor-pointer hover:bg-slate-200 pl-2">
                 Sale
               </li>
-
-              <li className="py-2 text-xs font-semibold cursor-pointer hover:bg-slate-200 pl-2">
+              <li onClick={() => setSelectReport(BalanceSheet)}
+                className="py-2 text-xs font-semibold cursor-pointer hover:bg-slate-200 pl-2">
                 Balance Sheet
               </li>
             </ul>
@@ -112,10 +112,13 @@ const Report = () => {
         </div>
         <div className="w-full">
           {
-            Sale == true ?
+            SelectReport == Sale ?
               <SalesInvoice />
               :
-              ""
+              SelectReport == Purchase ?
+                <PurchaseInvoice />
+                :
+                ""
           }
         </div>
       </div>
