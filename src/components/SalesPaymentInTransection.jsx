@@ -1,10 +1,13 @@
+import { React, useState } from "react"
 import { AiOutlineSearch } from "react-icons/ai"
 import { PiDotsThreeVerticalBold } from "react-icons/pi"
 import { AiFillPrinter } from "react-icons/ai"
 import { AiFillPlusCircle } from "react-icons/ai"
-
+import AddPaymentInModel from "./AddPaymentInModel"
 
 const SalesPaymentInTransection = () => {
+    const [AddPaymentIn, setAddPaymentIn] = useState(false);
+
     return (
         <>
             <div className=" h-[440px] bg-white shadow-md">
@@ -21,7 +24,8 @@ const SalesPaymentInTransection = () => {
                             </div>
                         </div>
 
-                        <div className="bg-blue-500 rounded-md text-white flex px-3 cursor-pointer items-center py-1">
+                        <div onClick={() => setAddPaymentIn(true)}
+                            className="bg-blue-500 rounded-md text-white flex px-3 cursor-pointer items-center py-1">
                             <AiFillPlusCircle className="text-lg mr-1" />
                             Add Payment In
                         </div>
@@ -55,7 +59,7 @@ const SalesPaymentInTransection = () => {
                                 recived/paid
                             </tr>
                             <tr className="uppercase text-[12px] font-semibold border w-full border-slate-200 py-2 pl-4">
-                            balance
+                                balance
                             </tr>
                             <tr className="uppercase text-[12px] font-semibold border w-full border-slate-200 py-2 pl-4">
                                 Act
@@ -96,6 +100,14 @@ const SalesPaymentInTransection = () => {
                 {/* All Transection */}
 
             </div>
+
+            <AddPaymentInModel
+                showModal={AddPaymentIn}
+                handleShowModal={setAddPaymentIn}
+            // PhoneDetails={PhoneDetails}
+            // is_Edit={is_Edit}
+            />
+
         </>
     );
 };

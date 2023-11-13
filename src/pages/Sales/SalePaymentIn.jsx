@@ -1,11 +1,12 @@
-import SalesPaymentInHeader from "../../components/SalesPaymentInHeader";
+import { React } from "react"
 import SalesPaymentInTransection from "../../components/SalesPaymentInTransection";
+import CommonHeader from "../../components/CommonHeader";
 
 const SalesPaymentIn = () => {
     return (
         <>
             <div className="p-3">
-                <SalesPaymentInHeader />
+                <CommonHeader/>
                 <SalesPaymentInTransection />
             </div>
         </>

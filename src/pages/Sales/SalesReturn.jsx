@@ -1,11 +1,11 @@
-import SaleReturnHeader from "../../components/SaleReturnHeader";
 import SalesReturnTransection from "../../components/SaleReturnTransection";
+import CommonHeader from "../../components/SalesPaymentInHeader";
 
 const SaleReturn = () => {
   return (
     <>
       <div className="p-3">
-        <SaleReturnHeader />
+      <CommonHeader/>
         <SalesReturnTransection />
       </div>
     </>

@@ -1,11 +1,10 @@
 import PurchasePaymentOutTransection from "../../components/PurchasePaymentOutTransection";
-import PurchaseReturnHeader from "../../components/PurchaseReturnHeader";
-
+import CommonHeader from "../../components/CommonHeader"
 const PurchaseReturn = () => {
     return (
         <>
             <div className="p-3">
-                <PurchaseReturnHeader />
+                <CommonHeader />
                 <PurchasePaymentOutTransection />
             </div>
         </>
