@@ -76,8 +76,15 @@ const ItemsTransection = () => {
                                 </div>
                                 <input type="search" name="search" id="" className="focus:outline-none text-black ml-2" />
                             </div>
-                            <div className="w-4 ">
-                                <img src="/exel.png" alt="exel" srcset="" className="cursor-pointer" />
+                            <div className="w-4 bg-yellow-500 relative">
+                                <img src="/exel.png" alt="exel" srcset="" className="cursor-pointer " />
+                                <div className='absolute' >
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        className=" inset-0 z-50 m-0 h-full cursor-pointer p-0 opacity-0 outline-none"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>

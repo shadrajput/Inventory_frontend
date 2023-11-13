@@ -211,7 +211,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/Parties"
-                  className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('calendar') &&
+                  className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('Parties') &&
                     'bg-graydark dark:bg-meta-4'
                     }`}
                 >
@@ -241,7 +241,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/Items"
-                  className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('profile') && 'bg-graydark dark:bg-meta-4'
+                  className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('Items') && 'bg-graydark dark:bg-meta-4'
                     }`}
                 >
                   <svg
@@ -293,8 +293,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to="/Sales/SaleInvoice"
-                        className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/forms' ||
-                          pathname.includes('forms')) &&
+                        className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/Sales' ||
+                          pathname.includes('Sales')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                         onClick={(e) => {
@@ -404,8 +404,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to="/Purchase/PurchaseInvoice"
-                        className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/forms' ||
-                          pathname.includes('forms')) &&
+                        className={`group relative flex items-center gap-2.5 text-[15px] rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/Purchase' ||
+                          pathname.includes('Purchase')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                         onClick={(e) => {
