@@ -1,16 +1,44 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../images/logo/logo-icon.png';
-import DarkModeSwitcher from './DarkModeSwitcher';
-import DropdownMessage from './DropdownMessage';
-import DropdownNotification from './DropdownNotification';
-import DropdownUser from './DropdownUser';
 import { BiPlus } from "react-icons/bi"
 import { AiFillSetting } from "react-icons/ai"
+import { AiFillCaretRight } from "react-icons/ai"
 
 const Header = ({
   sidebarOpen,
   setSidebarOpen
 }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdown = useRef(null);
+  const trigger = useRef(null);
+
+  // close on click outside
+  useEffect(() => {
+    const clickHandler = ({ target }) => {
+      if (!dropdown.current) return;
+      if (
+        !dropdownOpen ||
+        dropdown.current.contains(target) ||
+        trigger.current.contains(target)
+      )
+        return;
+      setDropdownOpen(false);
+    };
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
+  });
+
+
+  // close if the esc key is pressed
+  useEffect(() => {
+    const keyHandler = ({ keyCode }) => {
+      if (!dropdownOpen || keyCode !== 27) return;
+      setDropdownOpen(false);
+    };
+    document.addEventListener('keydown', keyHandler);
+    return () => document.removeEventListener('keydown', keyHandler);
+  });
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-5">
@@ -103,33 +131,114 @@ const Header = ({
             </button>
           </div>
           {/* Add Sales Button */}
-          {/* Add Sales Button */}
+
+          {/* Add Purchase Button */}
           <div className='bg-blue-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
             <BiPlus className='text-xl bg-blue-500 rounded-full' />
             <button className='text-blue-500'>
               Add Purchase
             </button>
           </div>
-          {/* Add Sales Button */}
-          {/* <ul className="flex items-center gap-2 2xsm:gap-4"> */}
-          {/* <!-- Dark Mode Toggler --> */}
-          {/* <DarkModeSwitcher /> */}
-          {/* <!-- Dark Mode Toggler --> */}
+          {/* Add Purchase Button */}
 
-          {/* <!-- Notification Menu Area --> */}
-          {/* <DropdownNotification /> */}
-          {/* <!-- Notification Menu Area --> */}
+          {/* Add More Button */}
 
-          {/* <!-- Chat Notification Area --> */}
-          {/* <DropdownMessage /> */}
-          {/* <!-- Chat Notification Area --> */}
-          {/* </ul> */}
+          <div ref={trigger}
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+            className='bg-white border border-slate-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
+            <BiPlus className='text-xl bg-blue-500 rounded-full' />
+            <button className='text-blue-500'>
+              Add More
+            </button>
+          </div>
+          {/* Add More Button */}
 
           {/* Setting Area */}
           <div className='border-l-2 border-slate-400 '>
             <AiFillSetting className='text-2xl ml-5 cursor-pointer hover:scale-105' />
           </div>
           {/* Setting Area */}
+
+        </div>
+        <div
+          ref={dropdown}
+          onFocus={() => setDropdownOpen(true)}
+          onBlur={() => setDropdownOpen(false)}
+          className={`absolute top-20 right-10 w-1/2 px-4 py-5 flex flex-col rounded-sm bg-white shadow-lg border border-slate-200  ${dropdownOpen === true ? 'block' : 'hidden'
+            }`}
+        >
+          <div className='flex items-start justify-between'>
+            <div>
+              <h1 className='text-black font-semibold uppercase ml-5'>Sale</h1>
+              <ul className="flex flex-col mt-3 gap-5 px-4 py-2 dark:border-strokedark">
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Sale Invoice</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Payment In</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Sale Return</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Sale Order</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Delivery Challan</p>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h1 className='text-black font-semibold uppercase ml-5'>Purchase</h1>
+              <ul className="flex flex-col mt-3 gap-5 px-4 py-2 dark:border-strokedark">
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Purchase Bill</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Payment Out</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Purchase Return</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Purchase Order</p>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h1 className='text-black font-semibold uppercase ml-5'>other</h1>
+              <ul className="flex flex-col mt-3 gap-5 px-4 py-2 dark:border-strokedark">
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Expenses</p>
+                </li>
+                <li className="flex items-center py-1 gap-1 text-sm cursor-pointer font-medium text-black duration-300 ease-in-out hover:text-blue-500"
+                >
+                  <AiFillCaretRight />
+                  <p>Party To Party Transfer</p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </header>
