@@ -34,6 +34,11 @@ const coreRoutes = [
     component: SaleInvoice,
   },
   {
+    path: '/Sale/SaleInvoiceForm',
+    title: 'Sales Invoice Form',
+    component: SaleInvoice,
+  },
+  {
     path: '/Sales/SalesPaymentIn',
     title: 'Sales Payment In',
     component: SalesPaymentIn,

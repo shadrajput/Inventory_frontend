@@ -1,14 +1,16 @@
-import { AiOutlineSearch } from "react-icons/ai"
-import { PiDotsThreeVerticalBold } from "react-icons/pi"
+import { React, useState } from "react"
+import { NavLink, useLocation } from 'react-router-dom';
 import { AiFillPrinter } from "react-icons/ai"
+import { PiDotsThreeVerticalBold } from "react-icons/pi"
 import { AiFillPlusCircle } from "react-icons/ai"
+import { AiOutlineSearch } from "react-icons/ai"
 
 
 const SalesTransection = () => {
     return (
         <>
+            {/* Sale Transection Section Start */}
             <div className=" h-[440px] bg-white shadow-md">
-
                 {/* Search Transection */}
                 <div className="w-full mt-3 px-5 py-3">
                     <h1 className="text-black uppercase text-sm font-medium">
@@ -24,10 +26,14 @@ const SalesTransection = () => {
                             </div>
                         </div>
 
-                        <div className="bg-blue-500 rounded-md text-white flex px-3 cursor-pointer items-center py-1">
-                            <AiFillPlusCircle className="text-lg mr-1" />
-                            Add Sales
-                        </div>
+                        <NavLink
+                            to="/Sales/SaleInvoice">
+                            <div
+                                className="bg-blue-500 rounded-md text-white flex px-3 cursor-pointer items-center py-1">
+                                <AiFillPlusCircle className="text-lg mr-1" />
+                                Add Sales
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
                 {/* Search Transection */}
@@ -90,9 +96,8 @@ const SalesTransection = () => {
                         </tbody>
                     </table>
                 </div>
-                {/* All Transection */}
-
             </div>
+            {/* Sale Transection Section End */}
         </>
     );
 };
