@@ -27,7 +27,7 @@ const SalesTransection = () => {
                         </div>
 
                         <NavLink
-                            to="/Sales/SaleInvoice">
+                            to="/Sales/SaleInvoice/SaleInvoiceForm">
                             <div
                                 className="bg-blue-500 rounded-md text-white flex px-3 cursor-pointer items-center py-1">
                                 <AiFillPlusCircle className="text-lg mr-1" />

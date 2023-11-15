@@ -1,10 +1,13 @@
+import PurchaseHeader from "../../components/PurchaseHeader";
+import PurchaseTransection from "../../components/PurchaseTransection";
 
 
 const PurchaseInvoice = () => {
     return (
-        <>
-            Make Purchase invoices & Print or share with your customers directly via WhatsApp or Email.
-        </>
+        <div className='p-3'>
+            <PurchaseHeader />
+            <PurchaseTransection />
+        </div>
     );
 };
 

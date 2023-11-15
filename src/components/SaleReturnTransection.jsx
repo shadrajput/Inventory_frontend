@@ -2,6 +2,7 @@ import { AiOutlineSearch } from "react-icons/ai"
 import { PiDotsThreeVerticalBold } from "react-icons/pi"
 import { AiFillPrinter } from "react-icons/ai"
 import { AiFillPlusCircle } from "react-icons/ai"
+import { NavLink, useLocation } from 'react-router-dom';
 
 
 const SalesReturnTransection = () => {
@@ -21,10 +22,12 @@ const SalesReturnTransection = () => {
                             </div>
                         </div>
 
-                        <div className="bg-blue-500 rounded-md text-white flex px-3 cursor-pointer items-center py-1">
-                            <AiFillPlusCircle className="text-lg mr-1" />
-                            Add Credit Note
-                        </div>
+                        <NavLink to="/Sales/SalesReturn/AddCreditNote">
+                            <div className="bg-blue-500 rounded-md text-white flex px-3 cursor-pointer items-center py-1">
+                                <AiFillPlusCircle className="text-lg mr-1" />
+                                Add Credit Note
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
                 {/* Search Transection */}
@@ -55,7 +58,7 @@ const SalesReturnTransection = () => {
                                 recived/paid
                             </tr>
                             <tr className="uppercase text-[12px] font-semibold border w-full border-slate-200 py-2 pl-4">
-                            balance
+                                balance
                             </tr>
                             <tr className="uppercase text-[12px] font-semibold border w-full border-slate-200 py-2 pl-4">
                                 Act

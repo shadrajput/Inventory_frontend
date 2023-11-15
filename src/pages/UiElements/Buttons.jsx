@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+eimport { Link } from 'react-router-dom';
 
 import Breadcrumb from '../../components/Breadcrumb';
 

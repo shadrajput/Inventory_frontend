@@ -448,7 +448,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                 (isActive && '!text-white')
                               }
                             >
-                              Purchase Bills
+                              Purchase Invoice
                             </NavLink>
                           </li>
                           <li>

@@ -1,9 +1,14 @@
 import { React, useState } from "react"
+import { MdOutlineCurrencyRupee } from "react-icons/md"
+import { BsGraphUp } from "react-icons/bs"
 import { AiFillPrinter } from "react-icons/ai"
+import SalesGraph from "../components/SalesGraph";
+import SalePrintOption from "../components/SalePrintOption";
 
 
-const CommonHeader = () => {
-
+const PurchaseHeader = () => {
+    const [Salegraph, setSalegraph] = useState(false);
+    const [Saleprintoption, setSaleprintoption] = useState(false);
     const [date, setDate] = useState(() => {
         new Date()?.toISOString().slice(0, 10).split("-").reverse().join("-");
     });
@@ -49,10 +54,10 @@ const CommonHeader = () => {
         setData(() => newData.reverse());
         setTransaction("?");
     }
-
     return (
         <>
-            <div className="bg-white h-32 shadow-md flex justify-between items-start pt-5 px-3">
+
+            <div className="bg-white h-40 shadow-md flex justify-between items-start pt-5 px-3">
                 <div className="left">
                     {/*  Filter For Sales */}
                     <div className="flex items-center space-x-4">
@@ -105,23 +110,33 @@ const CommonHeader = () => {
                         {/* All Firm and My Company Filter End */}
 
                     </div>
-                    <div>
-                        <select name="" id="" className="border p-1.5 rounded-md w-52 mt-5 text-black font-medium focus:outline-none text-sm">
-                            <option value="AllTransection">All Transection</option>
-                            <option value="Sale">Sale</option>
-                            <option value="Purchase">Purchase</option>
-                            <option value="Payment-In">Payment -In</option>
-                            <option value="Payment-Out">Payment-Out</option>
-                            <option value="Credit-Note">Credit-Note</option>
-                            <option value="Debit-Note">Debit-Note</option>
-                            <option value="Sale-Order">Sale-Order</option>
-                            <option value="Purchase-Order">Purchase-Order</option>
-                            <option value="Expense">Expense</option>
-                            <option value="Delivery Challan">Delivery Challan</option>
-                        </select>
-                    </div>
-
                     {/*  Filter For Sales */}
+
+                    {/* Paid and paidup sales */}
+                    <div className="flex items-center space-x-10 mt-7 ml-5">
+                        <div className="bg-green-300 pt-2 rounded-md w-40 pl-3 pb-2  text-[#314259] ">
+                            <p className="font-medium">Paid</p>
+                            <div className="flex items-center">
+                                <MdOutlineCurrencyRupee className="text-lg" />
+                                <p className="font-semibold">0.00</p>
+                            </div>
+                        </div>
+                        <div className="bg-blue-300  pt-2 rounded-md w-40 pl-3 pb-2 text-[#314259] ">
+                            <p className="font-medium">Unpaid</p>
+                            <div className="flex items-center">
+                                <MdOutlineCurrencyRupee className="text-lg" />
+                                <p className="font-semibold">0.00</p>
+                            </div>
+                        </div>
+                        <div className="bg-amber-500 pt-2 rounded-md w-40 pl-3 pb-2  text-[#314259] ">
+                            <p className="font-medium">Unpaid</p>
+                            <div className="flex items-center">
+                                <MdOutlineCurrencyRupee className="text-lg" />
+                                <p className="font-semibold">0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Paid and paidup sales */}
                 </div>
 
                 <div className="right flex items-center justify-end space-x-7  w-60 mr-2">
@@ -139,8 +154,27 @@ const CommonHeader = () => {
                     </div>
                 </div>
             </div>
+
+            {
+                Salegraph == true ?
+                    <SalesGraph
+                        showModal={Salegraph}
+                        handleShowModal={setSalegraph}
+                    // PhoneDetails={PhoneDetails}
+                    // is_Edit={is_Edit}
+                    />
+                    :
+                    ""
+            }
+
+            <SalePrintOption
+                showModal={Saleprintoption}
+                handleShowModal={setSaleprintoption}
+            // PhoneDetails={PhoneDetails}
+            // is_Edit={is_Edit}
+            />
         </>
     );
 };
 
-export default CommonHeader;
+export default PurchaseHeader;

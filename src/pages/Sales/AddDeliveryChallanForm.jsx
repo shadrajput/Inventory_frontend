@@ -10,7 +10,7 @@ import { SlNotebook } from "react-icons/sl";
 import { IoCamera } from "react-icons/io5";
 
 
-function SaleInvoiceForm
+function AddDeliveryChallanForm
     ({ showModal, handleShowModal, PhoneDetails, is_Edit }) {
     const [Adhar_front, setadharfront] = useState("");
     const [DefaultadharFront, setdefaultadharfront] = useState();
@@ -43,22 +43,13 @@ function SaleInvoiceForm
                             is_Edit == true ?
                                 "Update Model"
                                 :
-                                "Sale"
+                                "Delivery Challan"
                         }
                     </h1>
-                    <div className="flex items-center ml-8 space-x-3">
-                        <h1 className="font-semibold text-sm">Credit</h1>
-                        <div>
-                            <SwitcherFour />
-                        </div>
-                        <h1 className="font-semibold text-sm">Cash</h1>
-                    </div>
                     <div className="absolute top-5 right-2.5 flex items-center space-x-3">
                         <AiFillSetting className="text-lg cursor-pointer" />
-
-
                         <NavLink
-                            to="/Sales/SaleInvoice">
+                            to="/Sales/DeliveryChallan">
                             <button
                                 type="button"
                                 className=" text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-lg p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
@@ -91,23 +82,19 @@ function SaleInvoiceForm
                             <div className="space-y-5">
                                 <div className="flex space-x-6">
                                     <input type="text" className="h-9 pl-2 text-sm focus:outline-blue-500 w-60 border rounded-md border-slate-300" name="Name" id="" placeholder="Billing Name (Optional)" />
-                                    <input type="text" className="h-9 pl-2 text-sm focus:outline-blue-500 w-60 border rounded-md border-slate-300" name="GSTIN" id="" placeholder="Phone No " />
-                                </div>
-                                <div className="flex space-x-6">
-                                    <textarea
-                                        rows={6}
-                                        placeholder="Billing Addresss"
-                                        className="w-full rounded-lg text-sm bg-white border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                                    ></textarea>
                                 </div>
                             </div>
                             <div className="space-y-3 w-1/3">
                                 <div className="flex items-center space-x-2 w-full">
-                                    <label htmlFor="Invoice Number" className="text-slate-400 text-sm text-end w-full">Invoice No</label>
+                                    <label htmlFor="Invoice Number" className="text-slate-400 text-sm text-end w-full">Challan No</label>
                                     <input type="text" className="focus:outline-none border-b px-3 bg-transparent w-full" />
                                 </div>
                                 <div className="flex items-center justify-between space-x-2 w-full">
                                     <label htmlFor="Invoice Date" className="text-slate-400 text-sm text-end w-full">Invoice Date</label>
+                                    <input type="Date" name="" id="" className="text-sm bg-transparent w-full" />
+                                </div>
+                                <div className="flex items-center justify-between space-x-2 w-full">
+                                    <label htmlFor="Invoice Date" className="text-slate-400 text-sm text-end w-full">Due Date</label>
                                     <input type="Date" name="" id="" className="text-sm bg-transparent w-full" />
                                 </div>
                                 <div className="flex items-center justify-between space-x-2 w-full">
@@ -127,45 +114,35 @@ function SaleInvoiceForm
                         {/* Billing Calculation */}
 
                         {/* Payment Type  */}
-                        <div className="px-5">
-                            <div className="flex items-center justify-between  py-8">
-                                <div>
-                                    <select name="paymenttype" id="" className="text-sm w-40 h-10 bg-transparent focus:outline-none text-black px-2">
-                                        <option value="Payment Type">Payment Type</option>
-                                        <option value="Cash">Cash</option>
-                                        <option value="Credit Card">Credit Card</option>
-                                        <option value="Debit Card">Debit Card</option>
-                                    </select>
-                                    <div className="flex text-blue-500 items-center text-sm ml-2 pt-2">
-                                        <BiPlus className="text-lg" />
-                                        <h1>Add Payment Type</h1>
-                                    </div>
+                        <div className="flex items-center justify-between py-10 px-5">
+                            <div>
+                                <div className="flex  items-center space-x-3 cursor-pointer font-medium border w-44 h-10 rounded-md uppercase text-xs px-3">
+                                    <SlNotebook className="text-base" />
+                                    <h1>Add Description</h1>
                                 </div>
+                                <div className="flex items-center space-x-3 cursor-pointer font-medium border w-32 mt-6 h-10 rounded-md uppercase text-xs px-3">
+                                    <IoCamera className="text-base" />
+                                    <h1>Add image</h1>
+                                </div>
+                            </div>
+                            <div className="">
                                 <div className="flex items-center space-x-5">
                                     <div className="flex items-center space-x-3">
                                         <input type="checkbox" name="" id="" className="w-4 h-4" />
                                         <h1 className="text-sm">Round Off</h1>
-                                        <input type="text" name="" id="" className="w-15 rounded-md border" />
+                                        <input type="text" name="" id="" className="w-15 rounded-md border-2" />
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <h1 className="text-sm">Total</h1>
-                                        <input type="text" name="" id="" className="h-10  border rounded-md" />
+                                        <input type="text" name="" id="" className="h-10  border-2 rounded-md" />
                                     </div>
                                 </div>
-                            </div>
-                            <div className="flex items-center space-x-3 cursor-pointer font-medium border w-44 h-10 rounded-md uppercase text-xs px-3">
-                                <SlNotebook className="text-base" />
-                                <h1>Add Description</h1>
-                            </div>
-                            <div className="flex items-center space-x-3 cursor-pointer font-medium border w-32 mt-6 h-10 rounded-md uppercase text-xs px-3">
-                                <IoCamera className="text-base" />
-                                <h1>Add image</h1>
                             </div>
                         </div>
                         {/* Payment Type  */}
 
                         {/* Save & Print Buttons */}
-                        <div className=" flex bg-white items-center justify-end mt-10 space-x-5 py-5 mr-5 ">
+                        <div className=" flex bg-white items-center justify-end space-x-5 py-5 px-5">
                             <div className="flex items-center cursor-pointer border h-9  rounded-md border-blue-500 ">
                                 <h1 className="px-4 text-blue-500 ">
                                     Print
@@ -187,4 +164,4 @@ function SaleInvoiceForm
     );
 }
 
-export default SaleInvoiceForm;
+export default AddDeliveryChallanForm;

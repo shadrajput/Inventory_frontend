@@ -3,14 +3,21 @@ import { lazy } from 'react';
 const Parties = lazy(() => import('../pages/Parties'));
 const Chart = lazy(() => import('../pages/Chart'));
 const SaleInvoice = lazy(() => import('../pages/Sales/SalesInvoice'));
+const SaleInvoiceForm = lazy(() => import('../pages/Sales/SaleInvoiceForm'));
 const SalesReturn = lazy(() => import('../pages/Sales/SalesReturn'));
+const AddCreditNote = lazy(() => import('../pages/Sales/AddCreditNoteForm'));
 const DeliveryChallan = lazy(() => import('../pages/Sales/SalesDeliveryChallan'));
+const AddDeliveryChallan = lazy(() => import('../pages/Sales/AddDeliveryChallanForm'));
 const SalesPaymentIn = lazy(() => import('../pages/Sales/SalePaymentIn'));
 const SalesOrder = lazy(() => import('../pages/Sales/SalesOrder'));
+const AddSalesOrderForm = lazy(() => import('../pages/Sales/AddSalesOrderForm'));
 const PurchaseInvoice = lazy(() => import('../pages/Purchase/PurchaseInvoice'));
+const AddPurchaseInvoice = lazy(() => import('../pages/Purchase/PurchaseInvoiceForm'));
 const PurchasePaymentOut = lazy(() => import('../pages/Purchase/PurchasePaymentOut'));
 const PurchaseOrder = lazy(() => import('../pages/Purchase/PurchaseOrder'));
+const PurchaseOrderForm = lazy(() => import('../pages/Purchase/AddPurchaseOrderForm'));
 const PurchaseReturn = lazy(() => import('../pages/Purchase/PurchaseReturn'));
+const AddDebitNoteForm = lazy(() => import('../pages/Purchase/AddDebitNoteForm'));
 const Items = lazy(() => import('../pages/Items'));
 const Report = lazy(() => import('../pages/Report'));
 const Tables = lazy(() => import('../pages/Tables'));
@@ -34,9 +41,9 @@ const coreRoutes = [
     component: SaleInvoice,
   },
   {
-    path: '/Sale/SaleInvoiceForm',
+    path: '/Sales/SaleInvoice/SaleInvoiceForm',
     title: 'Sales Invoice Form',
-    component: SaleInvoice,
+    component: SaleInvoiceForm,
   },
   {
     path: '/Sales/SalesPaymentIn',
@@ -49,9 +56,19 @@ const coreRoutes = [
     component: SalesOrder,
   },
   {
+    path: '/Sales/SalesOrder/AddSalesOrderForm',
+    title: 'Sales Order',
+    component: AddSalesOrderForm,
+  },
+  {
     path: '/Sales/DeliveryChallan',
     title: 'Delivery Challan',
     component: DeliveryChallan,
+  },
+  {
+    path: '/Sales/DeliveryChallan/AddDeliveryChallan',
+    title: 'Delivery Challan',
+    component: AddDeliveryChallan,
   },
   {
     path: '/Sales/SalesReturn',
@@ -59,9 +76,19 @@ const coreRoutes = [
     component: SalesReturn,
   },
   {
+    path: '/Sales/SalesReturn/AddCreditNote',
+    title: 'Sales Return',
+    component: AddCreditNote,
+  },
+  {
     path: '/Purchase/PurchaseInvoice',
     title: 'Purchase Invoice',
     component: PurchaseInvoice,
+  },
+  {
+    path: '/Purchase/PurchaseInvoice/PurchaseInvoiceForm',
+    title: 'Purchase Invoice',
+    component: AddPurchaseInvoice,
   },
   {
     path: '/Purchase/PaymentOut',
@@ -74,9 +101,19 @@ const coreRoutes = [
     component: PurchaseOrder,
   },
   {
+    path: '/Purchase/PurchaseOrder/AddPurchaseOrderForm',
+    title: 'Purchase Purchase Order form',
+    component: PurchaseOrderForm,
+  },
+  {
     path: '/Purchase/PurchaseReturn',
     title: 'Purchase Purchase Return',
     component: PurchaseReturn,
+  },
+  {
+    path: '/Purchase/PurchaseReturn/AddDebitNote',
+    title: 'Purchase Debit Note',
+    component: AddDebitNoteForm,
   },
   {
     path: '/tables',
