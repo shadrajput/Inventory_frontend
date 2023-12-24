@@ -20,7 +20,8 @@ const PurchaseReturn = lazy(() => import('../pages/Purchase/PurchaseReturn'));
 const AddDebitNoteForm = lazy(() => import('../pages/Purchase/AddDebitNoteForm'));
 const Items = lazy(() => import('../pages/Items'));
 const Report = lazy(() => import('../pages/Report'));
-const Tables = lazy(() => import('../pages/Tables'));
+const Expense = lazy(() => import('../pages/Expense/Expense'));
+const AddExpense = lazy(() => import('../pages/Expense/AddExpenseForm'));
 const Alerts = lazy(() => import('../pages/UiElements/Alerts'));
 const Buttons = lazy(() => import('../pages/UiElements/Buttons'));
 
@@ -116,9 +117,14 @@ const coreRoutes = [
     component: AddDebitNoteForm,
   },
   {
-    path: '/tables',
-    title: 'Tables',
-    component: Tables,
+    path: '/Expense',
+    title: 'Expense',
+    component: Expense,
+  },
+  {
+    path: '/Expense/AddExpense',
+    title: 'Expense Form',
+    component: AddExpense,
   },
   {
     path: '/Report',

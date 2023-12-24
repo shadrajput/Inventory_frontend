@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '../images/logo/logo-icon.png';
 import { BiPlus } from "react-icons/bi"
 import { AiFillSetting } from "react-icons/ai"
@@ -124,21 +124,25 @@ const Header = ({
 
         <div className="flex items-center gap-3 2xsm:gap-4">
           {/* Add Sales Button */}
-          <div className='bg-red-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
-            <BiPlus className='text-xl bg-red-500 rounded-full' />
-            <button className='text-red-500'>
-              Add Sales
-            </button>
-          </div>
+          <NavLink to="/Sales/SaleInvoice/SaleInvoiceForm">
+            <div className='bg-red-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
+              <BiPlus className='text-xl bg-red-500 rounded-full' />
+              <button className='text-red-500'>
+                Add Sales
+              </button>
+            </div>
+          </NavLink>
           {/* Add Sales Button */}
 
           {/* Add Purchase Button */}
-          <div className='bg-blue-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
-            <BiPlus className='text-xl bg-blue-500 rounded-full' />
-            <button className='text-blue-500'>
-              Add Purchase
-            </button>
-          </div>
+          <NavLink to="/Purchase/PurchaseInvoice/PurchaseInvoiceFormq">
+            <div className='bg-blue-200 shadow-lg cursor-pointer flex items-center hover:scale-105 text-sm duration-200 text-white rounded-full px-5 space-x-3 h-10 font-semibold'>
+              <BiPlus className='text-xl bg-blue-500 rounded-full' />
+              <button className='text-blue-500'>
+                Add Purchase
+              </button>
+            </div>
+          </NavLink>
           {/* Add Purchase Button */}
 
           {/* Add More Button */}

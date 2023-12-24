@@ -8,6 +8,8 @@ import SwitcherFour from '../../components/SwitcherFour';
 import { FaAngleDown } from "react-icons/fa";
 import { SlNotebook } from "react-icons/sl";
 import { IoCamera } from "react-icons/io5";
+import { SaleSchema, initialValues } from "../../../src/SchemaandValues/SaleSchema&Value";
+
 
 
 function SaleInvoiceForm
@@ -31,67 +33,118 @@ function SaleInvoiceForm
         setgstandaddress(false)
     }
 
+    const { values, touched, resetForm, errors, handleChange, handleSubmit, handleBlur } =
+        useFormik({
+            initialValues: initialValues,
+            validationSchema: SaleSchema,
+            async onSubmit(data) {
+                try {
+                    const fd = new FormData();
+                    let ok = JSON.stringify({
+                        CustomerInfo: data,
+                    });
+                    fd.append("data", ok);
+                    fd.append("photo", photo);
+                    fd.append("adhar_front", Adhar_front);
+                    fd.append("adhar_back", Adhar_back);
+                    fd.append("pancard", Pan);
+                    fd.append("light_bill", Bill);
+                    setIsSubmitting(true);
+                    const response = await AddCustomer(fd)
+                    setIsSubmitting(false);
+                    toast.success(response.data.message);
+                    resetForm({ values: "" })
+                    navigate(`/InstallmentList/profile-detail/${response?.data?.data?.id}`)
+                } catch (err) {
+                    setIsSubmitting(false);
+                    toast.error(err.response.data.message);
+                }
+            },
+        });
+
     return (
         <div
             onClose={handleModalClose}>
-            <div className="inline-block w-full bg-[#92929227] text-left transition-all transform bg-gray-700 shadow-xl rounded-lg ">
-                <div className="border-b py-5 px-10 border-slate-200 flex items-center">
-                    <h1
-                        as="h3"
-                        className=" text-lg font-semibold text-blue-950">
-                        {
-                            is_Edit == true ?
-                                "Update Model"
-                                :
-                                "Sale"
-                        }
-                    </h1>
-                    <div className="flex items-center ml-8 space-x-3">
-                        <h1 className="font-semibold text-sm">Credit</h1>
-                        <div>
-                            <SwitcherFour />
+            <form action="" onSubmit={handleSubmit}>
+                <div className="inline-block w-full bg-[#92929227] text-left transition-all transform bg-gray-700 shadow-xl rounded-lg ">
+                    <div className="border-b py-5 px-10 border-slate-200 flex items-center">
+                        <h1
+                            as="h3"
+                            className=" text-lg font-semibold text-blue-950">
+                            {
+                                is_Edit == true ?
+                                    "Update Model"
+                                    :
+                                    "Sale"
+                            }
+                        </h1>
+                        <div className="flex items-center ml-8 space-x-3">
+                            <h1 className="font-semibold text-sm">Credit</h1>
+                            <div>
+                                <SwitcherFour />
+                            </div>
+                            <h1 className="font-semibold text-sm">Cash</h1>
                         </div>
-                        <h1 className="font-semibold text-sm">Cash</h1>
-                    </div>
-                    <div className="absolute top-5 right-2.5 flex items-center space-x-3">
-                        <AiFillSetting className="text-lg cursor-pointer" />
-
-
-                        <NavLink
-                            to="/Sales/SaleInvoice">
-                            <button
-                                type="button"
-                                className=" text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-lg p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                data-modal-hide="match-formation-modal"
-                                onClick={handleModalClose}
-                            >
-                                <svg
-                                    aria-hidden="true"
-                                    className="w-6 h-6"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
+                        <div className="absolute top-5 right-2.5 flex items-center space-x-3">
+                            <AiFillSetting className="text-lg cursor-pointer" />
+                            <NavLink
+                                to="/Sales/SaleInvoice">
+                                <button
+                                    type="button"
+                                    className=" text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-lg p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                    data-modal-hide="match-formation-modal"
+                                    onClick={handleModalClose}
                                 >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    ></path>
-                                </svg>
-                                <span className="sr-only">Close modal</span>
-                            </button>
-                        </NavLink>
+                                    <svg
+                                        aria-hidden="true"
+                                        className="w-6 h-6"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            fillRule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clipRule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <span className="sr-only">Close modal</span>
+                                </button>
+                            </NavLink>
+                        </div>
                     </div>
-                </div>
 
-                <div className="">
-                    <form action="">
+                    <div className="">
                         {/* Name and Number Details */}
                         <div className="flex justify-between items-start px-5 py-10 ">
                             <div className="space-y-5">
                                 <div className="flex space-x-6">
-                                    <input type="text" className="h-9 pl-2 text-sm focus:outline-blue-500 w-60 border rounded-md border-slate-300" name="Name" id="" placeholder="Billing Name (Optional)" />
-                                    <input type="text" className="h-9 pl-2 text-sm focus:outline-blue-500 w-60 border rounded-md border-slate-300" name="GSTIN" id="" placeholder="Phone No " />
+                                    <div className="flex flex-col">
+                                        <input type="text" className="h-9 pl-2 text-sm focus:outline-blue-500 w-60 border rounded-md border-slate-300"
+                                            name="Name" id="" placeholder="Billing Name (Optional)"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.Name}
+                                        />
+                                        <span className="text-[12px] font-semibold text-red-600 px-1">
+                                            {errors.Name && touched.Name
+                                                ? errors.Name
+                                                : null}
+                                        </span>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <input type="text" className="h-9 pl-2 text-sm focus:outline-blue-500 w-60 border rounded-md border-slate-300"
+                                            name="MobileNo" id="" placeholder="Phone No "
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.MobileNo}
+                                        />
+                                        <span className="text-[12px] font-semibold text-red-600 px-1">
+                                            {errors.MobileNo && touched.MobileNo
+                                                ? errors.MobileNo
+                                                : null}
+                                        </span>
+                                    </div>
                                 </div>
                                 <div className="flex space-x-6">
                                     <textarea
@@ -101,20 +154,34 @@ function SaleInvoiceForm
                                     ></textarea>
                                 </div>
                             </div>
-                            <div className="space-y-3 w-1/3">
-                                <div className="flex items-center space-x-2 w-full">
-                                    <label htmlFor="Invoice Number" className="text-slate-400 text-sm text-end w-full">Invoice No</label>
-                                    <input type="text" className="focus:outline-none border-b px-3 bg-transparent w-full" />
-                                </div>
-                                <div className="flex items-center justify-between space-x-2 w-full">
-                                    <label htmlFor="Invoice Date" className="text-slate-400 text-sm text-end w-full">Invoice Date</label>
-                                    <input type="Date" name="" id="" className="text-sm bg-transparent w-full" />
-                                </div>
-                                <div className="flex items-center justify-between space-x-2 w-full">
-                                    <label htmlFor="State of supply" className="text-slate-400 text-sm text-end w-full">State of supply</label>
-                                    <select name="state" id="" className="focus:outline-none text-sm bg-transparent w-full">
-                                        <option value="Select">Select</option>
-                                    </select>
+                            <div className="flex justify-between items-start px-5 py-10 ">
+                                <div className="space-y-3">
+                                    <div className="flex flex-col space-y-1 items-center">
+                                        <div className="flex item-center space-x-2">
+                                            <label htmlFor="Invoice Number" className="text-slate-400 text-sm">Invoice Number</label>
+                                            <input type="text" name="Invoiceno" className="focus:outline-none border-b px-3 bg-transparent"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.Invoiceno}
+                                            />
+                                        </div>
+                                        <span className="text-[12px] font-semibold text-red-600 px-1">
+                                            {errors.Invoiceno && touched.Invoiceno
+                                                ? errors.Invoiceno
+                                                : null}
+                                        </span>
+                                    </div>
+                                    <div className="flex flex-col space-y-1 items-center ">
+                                        <div className="flex space-x-2 w-full item-start">
+                                            <label htmlFor="Invoice Date" className="text-slate-400 text-sm">Invoice Date</label>
+                                            <input type="Date" name="" id="" className="text-sm bg-transparent w-2/3" />
+                                        </div>
+                                        <span className="text-[12px] font-semibold text-red-600 px-1">
+                                            {errors.Invoiceno && touched.Invoiceno
+                                                ? errors.Invoiceno
+                                                : null}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +232,7 @@ function SaleInvoiceForm
                         {/* Payment Type  */}
 
                         {/* Save & Print Buttons */}
-                        <div className=" flex bg-white items-center justify-end mt-10 space-x-5 py-5 mr-5 ">
+                        <div className=" flex bg-white items-center justify-end mt-10 space-x-5 py-5 px-5 ">
                             <div className="flex items-center cursor-pointer border h-9  rounded-md border-blue-500 ">
                                 <h1 className="px-4 text-blue-500 ">
                                     Print
@@ -179,10 +246,9 @@ function SaleInvoiceForm
                             </div>
                         </div>
                         {/* Save & Print Buttons */}
-
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }
